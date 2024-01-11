@@ -56,15 +56,47 @@
 		2D9240C02B509BEC00835F65 /* GH Repo Search */ = {
 			isa = PBXGroup;
 			children = (
-				2D9240C12B509BEC00835F65 /* AppDelegate.swift */,
-				2D9240C32B509BEC00835F65 /* SceneDelegate.swift */,
-				2D9240C52B509BEC00835F65 /* ViewController.swift */,
+				2D9240D52B50A61F00835F65 /* Model */,
+				2D9240D62B50A62A00835F65 /* Views */,
+				2D9240D72B50A63400835F65 /* Presenters */,
+				2D9240D82B50A67200835F65 /* Supported files */,
 				2D9240C72B509BEC00835F65 /* Main.storyboard */,
-				2D9240CA2B509BEE00835F65 /* Assets.xcassets */,
-				2D9240CC2B509BEE00835F65 /* LaunchScreen.storyboard */,
 				2D9240CF2B509BEE00835F65 /* Info.plist */,
 			);
 			path = "GH Repo Search";
+			sourceTree = "<group>";
+		};
+		2D9240D52B50A61F00835F65 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2D9240D62B50A62A00835F65 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2D9240CC2B509BEE00835F65 /* LaunchScreen.storyboard */,
+				2D9240C52B509BEC00835F65 /* ViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		2D9240D72B50A63400835F65 /* Presenters */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenters;
+			sourceTree = "<group>";
+		};
+		2D9240D82B50A67200835F65 /* Supported files */ = {
+			isa = PBXGroup;
+			children = (
+				2D9240C12B509BEC00835F65 /* AppDelegate.swift */,
+				2D9240C32B509BEC00835F65 /* SceneDelegate.swift */,
+				2D9240CA2B509BEE00835F65 /* Assets.xcassets */,
+			);
+			path = "Supported files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

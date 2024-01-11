@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  GH Repo Search
 //
-//  Created by Amr Mohamad on 11/01/2024.
+//  Created by Amr Mohamad on 11/01/2024
 //
 
 import UIKit
