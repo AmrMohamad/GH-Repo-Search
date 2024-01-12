@@ -17,9 +17,20 @@ class RepositoryTableViewCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
+    
+    let avaterImageView: UIImageView = {
+        let imageView = UIImageView(image: UIImage(systemName: "person.fill"))
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFit
+        imageView.backgroundColor = .systemGray2
+        imageView.layer.cornerRadius = 16
+        imageView.layer.masksToBounds = true
+        return imageView
+    }()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        contentView.addSubview(avaterImageView)
         contentView.addSubview(repoName)
         
         setConstraints()
@@ -31,7 +42,12 @@ class RepositoryTableViewCell: UITableViewCell {
     
     private func setConstraints(){
         NSLayoutConstraint.activate([
-            repoName.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12),
+            avaterImageView.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.70),
+            avaterImageView.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.25),
+            avaterImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            avaterImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            
+            repoName.leadingAnchor.constraint(equalTo: avaterImageView.trailingAnchor, constant: 12),
             repoName.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             
             contentView.heightAnchor.constraint(equalToConstant: 120)

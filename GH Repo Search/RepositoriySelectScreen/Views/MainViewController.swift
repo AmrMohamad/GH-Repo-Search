@@ -55,6 +55,7 @@ class MainViewController: UIViewController, GitHubRepositoryViewProtocol{
         // Do any additional setup after loading the view.
         presenter = GitHubRepositoriesPresenter(view: self)
         view.backgroundColor = .systemBackground
+        title = "GitHub Repositories"
         
         view.addSubview(tableView)
         tableView.dataSource = self
@@ -65,6 +66,8 @@ class MainViewController: UIViewController, GitHubRepositoryViewProtocol{
     
     override func viewDidLayoutSubviews() {
         tableView.frame = view.bounds
+        navigationItem.largeTitleDisplayMode = .always
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
     
 

@@ -28,4 +28,8 @@ struct GitHubAPIManager {
             task.resume()
         }
     }
+    
+    func fetchInfoOfRepo(){
+        
+    }
 }

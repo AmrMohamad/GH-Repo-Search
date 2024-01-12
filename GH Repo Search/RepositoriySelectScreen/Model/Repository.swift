@@ -10,4 +10,10 @@ import Foundation
 struct Repository: Codable {
     var id: Int
     var name: String
+    var url: String
+    var owner: [Owner]
+    
+    func getDateOfCreation(){
+        
+    }
 }
