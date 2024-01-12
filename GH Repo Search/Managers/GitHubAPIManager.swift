@@ -12,7 +12,7 @@ struct GitHubAPIManager {
     
     let ghURL = "https://api.github.com/repositories"
     
-    func fetchReposWith(){
+    func fetchReposWith(completion: @escaping ([Repository]?, Error?) -> Void){
         if let url = URL(string: ghURL) {
             let session = URLSession(configuration: .default)
             let task =  session.dataTask(with: url) { data, response, error in
@@ -20,9 +20,9 @@ struct GitHubAPIManager {
                 let decoder = JSONDecoder()
                 do {
                     let repos = try decoder.decode([Repository].self, from: data)
-                    dump(repos)
+                    completion(repos,nil)
                 }catch {
-                    print(error)
+                    completion(nil,error)
                 }
             }
             task.resume()

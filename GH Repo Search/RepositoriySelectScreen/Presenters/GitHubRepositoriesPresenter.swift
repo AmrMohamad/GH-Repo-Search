@@ -12,8 +12,17 @@ protocol GitHubRepositoriesPresenterProtocol {
 }
 
 class GitHubRepositoriesPresenter: GitHubRepositoriesPresenterProtocol {
+    weak var view: GitHubRepositoryViewProtocol?
+    
+    init(view: GitHubRepositoryViewProtocol) {
+        self.view = view
+    }
     
     func viewDidLoad() {
-        <#code#>
+        GitHubAPIManager.shared.fetchReposWith { [weak self] repositories, error in
+            if let ropes = repositories {
+                self?.view?.showRepositories(ropes)
+            }
+        }
     }
 }
