@@ -16,6 +16,8 @@
 		2DBE656F2B5180FE004510C2 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBE656E2B5180FE004510C2 /* Repository.swift */; };
 		2DBE65712B519189004510C2 /* GitHubRepositoriesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBE65702B519189004510C2 /* GitHubRepositoriesPresenter.swift */; };
 		2DBE65742B519686004510C2 /* RepositoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBE65732B519686004510C2 /* RepositoryTableViewCell.swift */; };
+		2DBE65762B51C0D8004510C2 /* MainViewController+UITableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBE65752B51C0D8004510C2 /* MainViewController+UITableViewDataSource.swift */; };
+		2DBE65782B51C939004510C2 /* MainViewController+UITableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBE65772B51C939004510C2 /* MainViewController+UITableViewDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		2DBE656E2B5180FE004510C2 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		2DBE65702B519189004510C2 /* GitHubRepositoriesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubRepositoriesPresenter.swift; sourceTree = "<group>"; };
 		2DBE65732B519686004510C2 /* RepositoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryTableViewCell.swift; sourceTree = "<group>"; };
+		2DBE65752B51C0D8004510C2 /* MainViewController+UITableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainViewController+UITableViewDataSource.swift"; sourceTree = "<group>"; };
+		2DBE65772B51C939004510C2 /* MainViewController+UITableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainViewController+UITableViewDelegate.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,8 +93,10 @@
 		2D9240D62B50A62A00835F65 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				2D9240C52B509BEC00835F65 /* MainViewController.swift */,
 				2DBE65732B519686004510C2 /* RepositoryTableViewCell.swift */,
+				2D9240C52B509BEC00835F65 /* MainViewController.swift */,
+				2DBE65752B51C0D8004510C2 /* MainViewController+UITableViewDataSource.swift */,
+				2DBE65772B51C939004510C2 /* MainViewController+UITableViewDelegate.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -195,9 +201,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D9240C62B509BEC00835F65 /* MainViewController.swift in Sources */,
+				2DBE65782B51C939004510C2 /* MainViewController+UITableViewDelegate.swift in Sources */,
 				2DBE65712B519189004510C2 /* GitHubRepositoriesPresenter.swift in Sources */,
 				2DBE65742B519686004510C2 /* RepositoryTableViewCell.swift in Sources */,
 				2D0290032B51387000F29AD0 /* GitHubAPIManager.swift in Sources */,
+				2DBE65762B51C0D8004510C2 /* MainViewController+UITableViewDataSource.swift in Sources */,
 				2DBE656F2B5180FE004510C2 /* Repository.swift in Sources */,
 				2D9240C22B509BEC00835F65 /* AppDelegate.swift in Sources */,
 				2D9240C42B509BEC00835F65 /* SceneDelegate.swift in Sources */,

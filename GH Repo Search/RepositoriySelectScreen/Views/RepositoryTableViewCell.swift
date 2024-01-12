@@ -32,7 +32,9 @@ class RepositoryTableViewCell: UITableViewCell {
     private func setConstraints(){
         NSLayoutConstraint.activate([
             repoName.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12),
-            repoName.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
+            repoName.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            
+            contentView.heightAnchor.constraint(equalToConstant: 120)
         ])
     }
 }
