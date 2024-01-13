@@ -11,7 +11,7 @@ protocol GitHubRepositoryViewProtocol: AnyObject {
     func showRepositories(_ repositories: [Repository])
 }
 
-class MainViewController: UIViewController, GitHubRepositoryViewProtocol{
+class MainViewController: UIViewController, GitHubRepositoryViewProtocol, UISearchControllerDelegate, UISearchBarDelegate{
     
     var presenter: GitHubRepositoriesPresenterProtocol?
     
@@ -24,6 +24,8 @@ class MainViewController: UIViewController, GitHubRepositoryViewProtocol{
         )
         return table
     }()
+    
+    let search = UISearchController(searchResultsController: nil)
     
     let loadingView: UIActivityIndicatorView = {
         let aiv = UIActivityIndicatorView(style: .large)
@@ -84,6 +86,10 @@ class MainViewController: UIViewController, GitHubRepositoryViewProtocol{
         view.addSubview(tableView)
         tableView.dataSource = self
         tableView.delegate = self
+        
+        search.delegate = self
+        search.searchBar.delegate = self
+        self.navigationItem.searchController = search
         
         presenter?.viewDidLoad()
     }
