@@ -73,7 +73,10 @@ class MainViewController: UIViewController, GitHubRepositoryViewProtocol{
     //MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        navigationItem.largeTitleDisplayMode = .always
+        navigationController?.navigationBar.prefersLargeTitles = true
+        
+        
         presenter = GitHubRepositoriesPresenter(view: self)
         view.backgroundColor = .systemBackground
         title = "GitHub Repositories"
@@ -87,11 +90,10 @@ class MainViewController: UIViewController, GitHubRepositoryViewProtocol{
     
     override func viewDidLayoutSubviews() {
         tableView.frame = view.bounds
+        tableView.isUserInteractionEnabled = false
         tableView.tableHeaderView = headerSpinnerView
         loadingView.startAnimating()
         
-        navigationItem.largeTitleDisplayMode = .always
-        navigationController?.navigationBar.prefersLargeTitles = true
     }
     
 
@@ -103,6 +105,7 @@ class MainViewController: UIViewController, GitHubRepositoryViewProtocol{
         }
         DispatchQueue.main.async {
             self.tableView.tableHeaderView = nil
+            self.tableView.isUserInteractionEnabled = true
             self.tableView.reloadData()
         }
     }

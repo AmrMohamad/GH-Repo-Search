@@ -15,9 +15,23 @@ class RepositoryTableViewCell: UITableViewCell {
     let repoName: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.systemFont(ofSize: 24, weight: .semibold)
         return label
     }()
     
+    let dateOfCreationLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        return label
+    }()
+    
+    let ownerLabel: UILabel = {
+        let label = UILabel ()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.systemFont(ofSize: 18, weight: .medium)
+        return label
+    }()
     let avaterImageView: UIImageView = {
         let imageView = UIImageView(image: UIImage(systemName: "person.fill"))
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -32,6 +46,8 @@ class RepositoryTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.addSubview(avaterImageView)
         contentView.addSubview(repoName)
+        contentView.addSubview(ownerLabel)
+        contentView.addSubview(dateOfCreationLabel)
         
         setConstraints()
     }
@@ -48,7 +64,14 @@ class RepositoryTableViewCell: UITableViewCell {
             avaterImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             
             repoName.leadingAnchor.constraint(equalTo: avaterImageView.trailingAnchor, constant: 12),
-            repoName.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            repoName.topAnchor.constraint(equalTo: avaterImageView.topAnchor, constant: 2),
+            
+            ownerLabel.leadingAnchor.constraint(equalTo: repoName.leadingAnchor),
+            ownerLabel.topAnchor.constraint(equalTo: repoName.bottomAnchor, constant: 10),
+            
+            dateOfCreationLabel.leadingAnchor.constraint(equalTo: repoName.leadingAnchor),
+            dateOfCreationLabel.bottomAnchor.constraint(equalTo: avaterImageView.bottomAnchor, constant: -2),
+            
             
             contentView.heightAnchor.constraint(equalToConstant: 120)
         ])
