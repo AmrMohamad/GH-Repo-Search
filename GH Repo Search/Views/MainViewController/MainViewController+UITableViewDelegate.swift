@@ -9,6 +9,11 @@ import UIKit
 
 extension MainViewController:  UITableViewDelegate {
 
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("didSelectRowAt\n\(repos[indexPath.row])")
+        presenter?.showDetailsOf(repository: repos[indexPath.row])
+    }
+    
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         // Ensure that the scrollView is the tableView.
         guard scrollView == tableView else {return}

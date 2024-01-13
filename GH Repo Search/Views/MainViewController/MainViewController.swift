@@ -12,7 +12,7 @@ protocol GitHubRepositoryViewProtocol: AnyObject {
 }
 
 class MainViewController: UIViewController, GitHubRepositoryViewProtocol, UISearchControllerDelegate, UISearchBarDelegate{
-    
+        
     var presenter: GitHubRepositoriesPresenterProtocol?
     
     //MARK: - UI elements
@@ -91,7 +91,7 @@ class MainViewController: UIViewController, GitHubRepositoryViewProtocol, UISear
         search.searchBar.delegate = self
         self.navigationItem.searchController = search
         
-        presenter?.viewDidLoad()
+        presenter?.viewDidLoadOfViewRepositories()
     }
     
     override func viewDidLayoutSubviews() {
