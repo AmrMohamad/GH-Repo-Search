@@ -13,12 +13,13 @@
 		2D9240C62B509BEC00835F65 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9240C52B509BEC00835F65 /* MainViewController.swift */; };
 		2D9240CB2B509BEE00835F65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D9240CA2B509BEE00835F65 /* Assets.xcassets */; };
 		2D9240CE2B509BEE00835F65 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D9240CC2B509BEE00835F65 /* LaunchScreen.storyboard */; };
-		2DBE656F2B5180FE004510C2 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBE656E2B5180FE004510C2 /* Repository.swift */; };
+		2DBE656F2B5180FE004510C2 /* RepositoryURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBE656E2B5180FE004510C2 /* RepositoryURL.swift */; };
 		2DBE65712B519189004510C2 /* GitHubRepositoriesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBE65702B519189004510C2 /* GitHubRepositoriesPresenter.swift */; };
 		2DBE65742B519686004510C2 /* RepositoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBE65732B519686004510C2 /* RepositoryTableViewCell.swift */; };
 		2DBE65762B51C0D8004510C2 /* MainViewController+UITableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBE65752B51C0D8004510C2 /* MainViewController+UITableViewDataSource.swift */; };
 		2DBE65782B51C939004510C2 /* MainViewController+UITableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBE65772B51C939004510C2 /* MainViewController+UITableViewDelegate.swift */; };
 		2DBE657A2B51F76F004510C2 /* Owner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBE65792B51F76F004510C2 /* Owner.swift */; };
+		2DBE657C2B5204D8004510C2 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBE657B2B5204D8004510C2 /* Repository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,12 +31,13 @@
 		2D9240CA2B509BEE00835F65 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2D9240CD2B509BEE00835F65 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2D9240CF2B509BEE00835F65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2DBE656E2B5180FE004510C2 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		2DBE656E2B5180FE004510C2 /* RepositoryURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryURL.swift; sourceTree = "<group>"; };
 		2DBE65702B519189004510C2 /* GitHubRepositoriesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubRepositoriesPresenter.swift; sourceTree = "<group>"; };
 		2DBE65732B519686004510C2 /* RepositoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryTableViewCell.swift; sourceTree = "<group>"; };
 		2DBE65752B51C0D8004510C2 /* MainViewController+UITableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainViewController+UITableViewDataSource.swift"; sourceTree = "<group>"; };
 		2DBE65772B51C939004510C2 /* MainViewController+UITableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainViewController+UITableViewDelegate.swift"; sourceTree = "<group>"; };
 		2DBE65792B51F76F004510C2 /* Owner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Owner.swift; sourceTree = "<group>"; };
+		2DBE657B2B5204D8004510C2 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,7 +89,8 @@
 		2D9240D52B50A61F00835F65 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				2DBE656E2B5180FE004510C2 /* Repository.swift */,
+				2DBE657B2B5204D8004510C2 /* Repository.swift */,
+				2DBE656E2B5180FE004510C2 /* RepositoryURL.swift */,
 				2DBE65792B51F76F004510C2 /* Owner.swift */,
 			);
 			path = Model;
@@ -210,9 +213,10 @@
 				2DBE65742B519686004510C2 /* RepositoryTableViewCell.swift in Sources */,
 				2D0290032B51387000F29AD0 /* GitHubAPIManager.swift in Sources */,
 				2DBE65762B51C0D8004510C2 /* MainViewController+UITableViewDataSource.swift in Sources */,
-				2DBE656F2B5180FE004510C2 /* Repository.swift in Sources */,
+				2DBE656F2B5180FE004510C2 /* RepositoryURL.swift in Sources */,
 				2D9240C22B509BEC00835F65 /* AppDelegate.swift in Sources */,
 				2D9240C42B509BEC00835F65 /* SceneDelegate.swift in Sources */,
+				2DBE657C2B5204D8004510C2 /* Repository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

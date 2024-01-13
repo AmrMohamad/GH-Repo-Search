@@ -41,6 +41,27 @@ class MainViewController: UIViewController, GitHubRepositoryViewProtocol{
         return view
     }()
     
+    lazy var headerSpinnerView: UIView = {
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 120))
+        view.addSubview(loadingView)
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Please wait few seconds, We are preparing the repositories for you"
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        
+        view.addSubview(label)
+        NSLayoutConstraint.activate([
+            loadingView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            loadingView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            
+            label.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            label.topAnchor.constraint(equalTo: loadingView.bottomAnchor, constant: 4),
+            label.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.60)
+        ])
+        return view
+    }()
+    
     //MARK: - Data
     var repos: [Repository] = []
     
@@ -66,6 +87,9 @@ class MainViewController: UIViewController, GitHubRepositoryViewProtocol{
     
     override func viewDidLayoutSubviews() {
         tableView.frame = view.bounds
+        tableView.tableHeaderView = headerSpinnerView
+        loadingView.startAnimating()
+        
         navigationItem.largeTitleDisplayMode = .always
         navigationController?.navigationBar.prefersLargeTitles = true
     }
@@ -78,6 +102,7 @@ class MainViewController: UIViewController, GitHubRepositoryViewProtocol{
             self.paginationRepos.append(repos[index])
         }
         DispatchQueue.main.async {
+            self.tableView.tableHeaderView = nil
             self.tableView.reloadData()
         }
     }
