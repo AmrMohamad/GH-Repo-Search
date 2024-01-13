@@ -55,7 +55,10 @@ class RepositoryTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+    override func prepareForReuse() {
+        avaterImageView.contentMode = .scaleAspectFit
+        avaterImageView.image = UIImage(systemName: "person.fill")
+    }
     private func setConstraints(){
         NSLayoutConstraint.activate([
             avaterImageView.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.70),
@@ -67,7 +70,7 @@ class RepositoryTableViewCell: UITableViewCell {
             repoName.topAnchor.constraint(equalTo: avaterImageView.topAnchor, constant: 2),
             
             ownerLabel.leadingAnchor.constraint(equalTo: repoName.leadingAnchor),
-            ownerLabel.topAnchor.constraint(equalTo: repoName.bottomAnchor, constant: 10),
+            ownerLabel.topAnchor.constraint(equalTo: repoName.bottomAnchor, constant: 6),
             
             dateOfCreationLabel.leadingAnchor.constraint(equalTo: repoName.leadingAnchor),
             dateOfCreationLabel.bottomAnchor.constraint(equalTo: avaterImageView.bottomAnchor, constant: -2),

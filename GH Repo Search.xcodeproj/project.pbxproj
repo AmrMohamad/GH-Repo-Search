@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2D0290032B51387000F29AD0 /* GitHubAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0290022B51387000F29AD0 /* GitHubAPIManager.swift */; };
+		2D19F6102B52AF5200D7B1F8 /* ImageViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D19F60F2B52AF5200D7B1F8 /* ImageViewExtensions.swift */; };
 		2D9240C22B509BEC00835F65 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9240C12B509BEC00835F65 /* AppDelegate.swift */; };
 		2D9240C42B509BEC00835F65 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9240C32B509BEC00835F65 /* SceneDelegate.swift */; };
 		2D9240C62B509BEC00835F65 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9240C52B509BEC00835F65 /* MainViewController.swift */; };
@@ -24,6 +25,7 @@
 
 /* Begin PBXFileReference section */
 		2D0290022B51387000F29AD0 /* GitHubAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubAPIManager.swift; sourceTree = "<group>"; };
+		2D19F60F2B52AF5200D7B1F8 /* ImageViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewExtensions.swift; sourceTree = "<group>"; };
 		2D9240BE2B509BEC00835F65 /* GH Repo Search.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GH Repo Search.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D9240C12B509BEC00835F65 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2D9240C32B509BEC00835F65 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -59,6 +61,14 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
+		2D19F60E2B52AF3200D7B1F8 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				2D19F60F2B52AF5200D7B1F8 /* ImageViewExtensions.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		2D9240B52B509BEB00835F65 = {
 			isa = PBXGroup;
 			children = (
@@ -78,6 +88,7 @@
 		2D9240C02B509BEC00835F65 /* GH Repo Search */ = {
 			isa = PBXGroup;
 			children = (
+				2D19F60E2B52AF3200D7B1F8 /* Helpers */,
 				2D0290012B51384100F29AD0 /* Managers */,
 				2DBE65722B519214004510C2 /* RepositoriySelectScreen */,
 				2D9240D82B50A67200835F65 /* Supported files */,
@@ -208,6 +219,7 @@
 			files = (
 				2D9240C62B509BEC00835F65 /* MainViewController.swift in Sources */,
 				2DBE65782B51C939004510C2 /* MainViewController+UITableViewDelegate.swift in Sources */,
+				2D19F6102B52AF5200D7B1F8 /* ImageViewExtensions.swift in Sources */,
 				2DBE65712B519189004510C2 /* GitHubRepositoriesPresenter.swift in Sources */,
 				2DBE657A2B51F76F004510C2 /* Owner.swift in Sources */,
 				2DBE65742B519686004510C2 /* RepositoryTableViewCell.swift in Sources */,

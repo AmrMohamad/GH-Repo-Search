@@ -16,6 +16,8 @@ extension MainViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: RepositoryTableViewCell.identifier, for: indexPath) as! RepositoryTableViewCell
         let repoItem = paginationRepos[indexPath.row]
+        cell.avaterImageView.loadImagefromCacheWithURLstring(urlString: repoItem.owner.avaterImageURL)
+        cell.avaterImageView.contentMode = .scaleAspectFill
         cell.repoName.text = repoItem.name
         cell.ownerLabel.text = "Owner: \(repoItem.owner.username)"
         let dateString = repoItem.createdAt
