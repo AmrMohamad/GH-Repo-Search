@@ -17,8 +17,8 @@ struct Repository: Codable {
     let description: String?
     let url: String
     let language: String?
-    let forks: Int
-    let watchers: Int
+    let forks: Int?
+    let watchers: Int?
     
     enum CodingKeys: String, CodingKey {
         case id, name, owner, url,forks, watchers

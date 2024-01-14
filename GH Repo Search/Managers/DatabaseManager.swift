@@ -27,7 +27,10 @@ class DatabaseManager {
                     owner: Owner(username: repositoryRealm.owner?.username ?? "", avaterImageURL: repositoryRealm.owner?.avaterImageURL ?? ""),
                     htmlURL: repositoryRealm.htmlURL,
                     description: repositoryRealm.repoDescription,
-                    url: repositoryRealm.url
+                    url: repositoryRealm.url,
+                    language: repositoryRealm.language,
+                    forks: repositoryRealm.forks,
+                    watchers: repositoryRealm.watchers
                 )
             }
             

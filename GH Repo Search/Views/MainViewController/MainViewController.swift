@@ -153,6 +153,9 @@ class MainViewController: UIViewController, GitHubRepositoryViewProtocol{
                             do {
                                 try self?.realm.write {
                                     existingRepository.createdAt = repoDetails.createdAt
+                                    existingRepository.language = repoDetails.language
+                                    existingRepository.forks = repoDetails.forks
+                                    existingRepository.watchers = repoDetails.watchers
                                 }
                             } catch {
                                 print("Error updating createdAt in Realm: \(error)")

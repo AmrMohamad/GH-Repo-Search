@@ -35,7 +35,10 @@ extension MainViewController : UISearchBarDelegate,UISearchControllerDelegate {
                         ) ,
                         htmlURL: i.htmlURL,
                         description: i.description,
-                        url: i.url
+                        url: i.url,
+                        language: i.language,
+                        forks: i.forks,
+                        watchers: i.watchers
                     )
                 )
             }
@@ -78,7 +81,10 @@ extension MainViewController : UISearchBarDelegate,UISearchControllerDelegate {
                             ) ,
                             htmlURL: i.htmlURL,
                             description: i.description,
-                            url: i.url
+                            url: i.url,
+                            language: i.language,
+                            forks: i.forks,
+                            watchers: i.watchers
                         )
                     )
                 }
