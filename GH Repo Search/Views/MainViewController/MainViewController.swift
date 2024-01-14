@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 protocol GitHubRepositoryViewProtocol: AnyObject {
     func showRepositories(_ repositories: [Repository])
@@ -14,7 +15,7 @@ protocol GitHubRepositoryViewProtocol: AnyObject {
 class MainViewController: UIViewController, GitHubRepositoryViewProtocol, UISearchControllerDelegate, UISearchBarDelegate{
         
     var presenter: GitHubRepositoriesPresenterProtocol?
-    
+    let realm = try! Realm()
     //MARK: - UI elements
     let tableView: UITableView = {
         let table = UITableView()
@@ -66,7 +67,7 @@ class MainViewController: UIViewController, GitHubRepositoryViewProtocol, UISear
     
     //MARK: - Data
     var repos: [Repository] = []
-    
+    var reposDetails: [String :RepositoryDetails] = [:]
     //MARK: - Pagination
     var repoPerPage = 10
     var limitForNumberOfRepos = 10
@@ -116,6 +117,54 @@ class MainViewController: UIViewController, GitHubRepositoryViewProtocol, UISear
         }
     }
     
+//    func retrieveCreationDate(for url: String) {
+//
+//        if let cachedDate = reposDetails[url] {
+//            print("Already cached: \(cachedDate)")
+//        } else {
+//            print(url)
+//            GitHubAPIManager.shared.fetchMoreDetailsForRepoWith(url) { [weak self] repositoryDetails in
+//                if let repoDetails = repositoryDetails{
+//                    self?.reposDetails[url] = repoDetails
+//                }
+//                dump(self?.reposDetails)
+//                DispatchQueue.main.async {
+//                    self?.tableView.reloadData()
+//                }
+//            }
+//        }
+//    }
+    
+    func retrieveCreationDate(for url: String) {
+        if let cachedDate = reposDetails[url] {
+            print("Already cached: \(cachedDate)")
+        } else {
+            print(url)
+            GitHubAPIManager.shared.fetchMoreDetailsForRepoWith(url) { [weak self] repositoryDetails in
+                if let repoDetails = repositoryDetails {
+                    DispatchQueue.main.async {
+                        // Get the existing object from Realm based on URL
+                        if let existingRepository = self?.realm.objects(RepositoryRealm.self).filter("url == %@", url).first {
+                            // Update only the createdAt property
+                            do {
+                                try self?.realm.write {
+                                    existingRepository.createdAt = repoDetails.createdAt
+                                }
+                            } catch {
+                                print("Error updating createdAt in Realm: \(error)")
+                            }
+                        }
+                        // Update the cache
+                        self?.reposDetails[url] = repoDetails
+
+                        self?.tableView.reloadData()
+                    }
+                }
+            }
+        }
+    }
+
+
     //MARK: - Pagination Implementation
     /// Sets up pagination for repositories based on the specified number of repositories per page.
     ///

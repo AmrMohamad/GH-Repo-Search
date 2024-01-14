@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import RealmSwift
 
 struct Repository: Codable {
     let id: Int
@@ -16,27 +17,42 @@ struct Repository: Codable {
     let description: String?
     let url: String
     
-    
     enum CodingKeys: String, CodingKey {
-        case id, name, owner, description, url
+        case id, name, owner, url
         case fullName = "full_name"
         case htmlURL = "html_url"
+        case description = "description"
     }
     
-//    func getCreationDate(completion: @escaping (RepositoryDetailed?,Error?)-> Void) {
-//        if let url = URL(string: self.url) {
-//            let session = URLSession(configuration: .default)
-//            let task =  session.dataTask(with: url) { data, response, error in
-//                guard let data = data else {return}
-//                let decoder = JSONDecoder()
-//                do {
-//                    let repos = try decoder.decode(RepositoryDetailed.self, from: data)
-//                    completion(repos,nil)
-//                }catch {
-//                    completion(nil,error)
-//                }
-//            }
-//            task.resume()
-//        }
-//    }
+}
+
+struct RepositoryDetails: Codable {
+    let createdAt: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case createdAt = "created_at"
+    }
+    
+}
+
+class RepositoryRealm: Object {
+    @Persisted(primaryKey: true) var id: Int = 0
+    @Persisted var name: String = ""
+    @Persisted var fullName: String = ""
+    @Persisted var owner: OwnerRealm? // Link to OwnerRealm object
+    @Persisted var htmlURL: String = ""
+    @Persisted var repoDescription: String?
+    @Persisted var url: String = ""
+    @Persisted var createdAt: String?
+
+    convenience init(repository: Repository) {
+        self.init()
+        self.id = repository.id
+        self.name = repository.name
+        self.fullName = repository.fullName
+        self.owner = OwnerRealm(owner: repository.owner)
+        self.htmlURL = repository.htmlURL
+        self.repoDescription = repository.description
+        self.url = repository.url
+    }
 }

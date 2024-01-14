@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B1C5043069D867A87089B3B /* Pods_GH_Repo_Search.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC5D03CE63F631C95FE1212A /* Pods_GH_Repo_Search.framework */; };
 		2D0290032B51387000F29AD0 /* GitHubAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0290022B51387000F29AD0 /* GitHubAPIManager.swift */; };
 		2D19F6102B52AF5200D7B1F8 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D19F60F2B52AF5200D7B1F8 /* ImageLoader.swift */; };
+		2D75914F2B53838800F4C0EA /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D75914E2B53838800F4C0EA /* DatabaseManager.swift */; };
 		2D9240C22B509BEC00835F65 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9240C12B509BEC00835F65 /* AppDelegate.swift */; };
 		2D9240C42B509BEC00835F65 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9240C32B509BEC00835F65 /* SceneDelegate.swift */; };
 		2D9240C62B509BEC00835F65 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9240C52B509BEC00835F65 /* MainViewController.swift */; };
@@ -27,6 +29,7 @@
 /* Begin PBXFileReference section */
 		2D0290022B51387000F29AD0 /* GitHubAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubAPIManager.swift; sourceTree = "<group>"; };
 		2D19F60F2B52AF5200D7B1F8 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		2D75914E2B53838800F4C0EA /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		2D9240BE2B509BEC00835F65 /* GH Repo Search.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GH Repo Search.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D9240C12B509BEC00835F65 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2D9240C32B509BEC00835F65 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -42,6 +45,9 @@
 		2DBE657B2B5204D8004510C2 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		2DD8262D2B52F2E200487D9F /* RepositoryDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailsViewController.swift; sourceTree = "<group>"; };
 		2DD826322B533B0100487D9F /* RepositoryDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailsPresenter.swift; sourceTree = "<group>"; };
+		809A2838131260395E25600E /* Pods-GH Repo Search.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GH Repo Search.debug.xcconfig"; path = "Target Support Files/Pods-GH Repo Search/Pods-GH Repo Search.debug.xcconfig"; sourceTree = "<group>"; };
+		A5D1F129F0CADCFEB60871F5 /* Pods-GH Repo Search.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GH Repo Search.release.xcconfig"; path = "Target Support Files/Pods-GH Repo Search/Pods-GH Repo Search.release.xcconfig"; sourceTree = "<group>"; };
+		CC5D03CE63F631C95FE1212A /* Pods_GH_Repo_Search.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GH_Repo_Search.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,16 +55,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B1C5043069D867A87089B3B /* Pods_GH_Repo_Search.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		10F7211147D9227B43A94A91 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CC5D03CE63F631C95FE1212A /* Pods_GH_Repo_Search.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		2D0290012B51384100F29AD0 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
 				2D0290022B51387000F29AD0 /* GitHubAPIManager.swift */,
+				2D75914E2B53838800F4C0EA /* DatabaseManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -76,6 +92,8 @@
 			children = (
 				2D9240C02B509BEC00835F65 /* GH Repo Search */,
 				2D9240BF2B509BEC00835F65 /* Products */,
+				A96AAE6D7B0E69944926168E /* Pods */,
+				10F7211147D9227B43A94A91 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -150,6 +168,15 @@
 			path = MainViewController;
 			sourceTree = "<group>";
 		};
+		A96AAE6D7B0E69944926168E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				809A2838131260395E25600E /* Pods-GH Repo Search.debug.xcconfig */,
+				A5D1F129F0CADCFEB60871F5 /* Pods-GH Repo Search.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -157,9 +184,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D9240D22B509BEE00835F65 /* Build configuration list for PBXNativeTarget "GH Repo Search" */;
 			buildPhases = (
+				103EC90AB38B0BEB64FE9A32 /* [CP] Check Pods Manifest.lock */,
 				2D9240BA2B509BEC00835F65 /* Sources */,
 				2D9240BB2B509BEC00835F65 /* Frameworks */,
 				2D9240BC2B509BEC00835F65 /* Resources */,
+				74251913A85D0E6C19A137DB /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -215,6 +244,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		103EC90AB38B0BEB64FE9A32 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GH Repo Search-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		74251913A85D0E6C19A137DB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GH Repo Search/Pods-GH Repo Search-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GH Repo Search/Pods-GH Repo Search-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GH Repo Search/Pods-GH Repo Search-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		2D9240BA2B509BEC00835F65 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -226,6 +297,7 @@
 				2D19F6102B52AF5200D7B1F8 /* ImageLoader.swift in Sources */,
 				2DBE65712B519189004510C2 /* GitHubRepositoriesPresenter.swift in Sources */,
 				2DBE657A2B51F76F004510C2 /* Owner.swift in Sources */,
+				2D75914F2B53838800F4C0EA /* DatabaseManager.swift in Sources */,
 				2DBE65742B519686004510C2 /* RepositoryTableViewCell.swift in Sources */,
 				2D0290032B51387000F29AD0 /* GitHubAPIManager.swift in Sources */,
 				2DBE65762B51C0D8004510C2 /* MainViewController+UITableViewDataSource.swift in Sources */,
@@ -366,6 +438,7 @@
 		};
 		2D9240D32B509BEE00835F65 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 809A2838131260395E25600E /* Pods-GH Repo Search.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -394,6 +467,7 @@
 		};
 		2D9240D42B509BEE00835F65 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A5D1F129F0CADCFEB60871F5 /* Pods-GH Repo Search.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

@@ -17,10 +17,12 @@ extension MainViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: RepositoryTableViewCell.identifier, for: indexPath) as! RepositoryTableViewCell
         let repoItem = paginationRepos[indexPath.row]
         
-        ImageLoader.shared.loadImage(withURL: repoItem.owner.avaterImageURL, into: cell.avaterImageView)
-        cell.avaterImageView.contentMode = .scaleAspectFill
-        cell.repoName.text = repoItem.name
-        cell.ownerLabel.text = "Owner: \(repoItem.owner.username)"
+        retrieveCreationDate(for: repoItem.url)
+        cell.setCreatedAt(date: reposDetails[repoItem.url]?.createdAt ?? "")
+        if !cell.dateOfCreationValueLabel.text!.isEmpty {
+            cell.loadingView.stopAnimating()
+        }
+        cell.configure(name: repoItem.name, ownerName: repoItem.owner.username, avaterURL: repoItem.owner.avaterImageURL)
 
         return cell
     }

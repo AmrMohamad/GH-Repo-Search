@@ -19,13 +19,6 @@ class RepositoryTableViewCell: UITableViewCell {
         return label
     }()
     
-    let dateOfCreationLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
-        return label
-    }()
-    
     let ownerLabel: UILabel = {
         let label = UILabel ()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -42,12 +35,46 @@ class RepositoryTableViewCell: UITableViewCell {
         return imageView
     }()
 
+    let dateOfCreationLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Created at:"
+        label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        return label
+    }()
+    
+    let dateOfCreationValueLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        return label
+    }()
+    
+    let loadingView: UIActivityIndicatorView = {
+        let aiv = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.medium)
+        aiv.translatesAutoresizingMaskIntoConstraints = false
+        aiv.startAnimating()
+        return aiv
+    }()
+    
+    func configure(name: String, ownerName: String, avaterURL: String) {
+        ImageLoader.shared.loadImage(withURL: avaterURL, into: self.avaterImageView)
+        self.avaterImageView.contentMode = .scaleAspectFill
+        self.repoName.text = name
+        self.ownerLabel.text = ownerName
+    }
+    func setCreatedAt(date: String) {
+        dateOfCreationValueLabel.text = date
+    }
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.addSubview(avaterImageView)
         contentView.addSubview(repoName)
         contentView.addSubview(ownerLabel)
         contentView.addSubview(dateOfCreationLabel)
+        contentView.addSubview(loadingView)
+        contentView.addSubview(dateOfCreationValueLabel)
         
         setConstraints()
     }
@@ -75,6 +102,13 @@ class RepositoryTableViewCell: UITableViewCell {
             dateOfCreationLabel.leadingAnchor.constraint(equalTo: repoName.leadingAnchor),
             dateOfCreationLabel.bottomAnchor.constraint(equalTo: avaterImageView.bottomAnchor, constant: -2),
             
+            loadingView.leadingAnchor.constraint(equalTo: dateOfCreationLabel.trailingAnchor, constant: 6),
+            loadingView.bottomAnchor.constraint(equalTo: dateOfCreationLabel.bottomAnchor, constant: -2),
+            loadingView.heightAnchor.constraint(equalToConstant: 10),
+            loadingView.widthAnchor.constraint(equalToConstant: 10),
+            
+            dateOfCreationValueLabel.leadingAnchor.constraint(equalTo: dateOfCreationLabel.trailingAnchor, constant: 6),
+            dateOfCreationValueLabel.bottomAnchor.constraint(equalTo: dateOfCreationLabel.bottomAnchor, constant: -2),
             
             contentView.heightAnchor.constraint(equalToConstant: 120)
         ])
