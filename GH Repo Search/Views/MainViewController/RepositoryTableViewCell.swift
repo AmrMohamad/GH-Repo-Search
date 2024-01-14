@@ -64,7 +64,18 @@ class RepositoryTableViewCell: UITableViewCell {
         self.ownerLabel.text = ownerName
     }
     func setCreatedAt(date: String) {
-        dateOfCreationValueLabel.text = date
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        
+        if let parsedDate = dateFormatter.date(from: date) {
+            // Successfully parsed the date
+            dateFormatter.dateFormat = "dd-MM-yyyy"
+            let formattedDate = dateFormatter.string(from: parsedDate)
+            dateOfCreationValueLabel.text = formattedDate
+        } else {
+            // Handle the case where the date string couldn't be parsed
+            dateOfCreationValueLabel.text = "NA"
+        }
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
