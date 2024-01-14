@@ -10,12 +10,12 @@ import UIKit
 extension MainViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return paginationRepos.count
+        (presenter?.returnRepositoriesCount())!
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: RepositoryTableViewCell.identifier, for: indexPath) as! RepositoryTableViewCell
-        let repoItem = paginationRepos[indexPath.row]
+        let repoItem = presenter!.getUsedRepository(at: indexPath.row)
         
         retrieveCreationDate(for: repoItem.url)
         cell.setCreatedAt(date: reposDetails[repoItem.url]?.createdAt ?? "")

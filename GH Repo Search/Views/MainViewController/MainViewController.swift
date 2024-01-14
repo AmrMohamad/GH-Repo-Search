@@ -10,9 +10,12 @@ import RealmSwift
 
 protocol GitHubRepositoryViewProtocol: AnyObject {
     func showRepositories(_ repositories: [Repository])
+    func reloadReposTableView()
 }
 
 class MainViewController: UIViewController, GitHubRepositoryViewProtocol{
+    
+    
         
     var presenter: GitHubRepositoriesPresenterProtocol?
     let realm = try! Realm()
@@ -69,10 +72,6 @@ class MainViewController: UIViewController, GitHubRepositoryViewProtocol{
     //MARK: - Data
     var repos: [Repository] = []
     var reposDetails: [String :RepositoryDetails] = [:]
-    //MARK: - Pagination
-    var repoPerPage = 10
-    var limitForNumberOfRepos = 10
-    var paginationRepos: [Repository] = []
     
     //MARK: - Life cycle
     override func viewDidLoad() {
@@ -107,17 +106,23 @@ class MainViewController: UIViewController, GitHubRepositoryViewProtocol{
 
     func showRepositories(_ repositories: [Repository]) {
         repos = repositories
-        limitForNumberOfRepos = repos.count
-        for index in 0..<10 {
-            self.paginationRepos.append(repos[index])
-        }
+
+//        limitForNumberOfRepos = repos.count
+//        for index in 0..<10 {
+//            self.paginationRepos.append(repos[index])
+//        }
+        presenter?.resetPagination()
         DispatchQueue.main.async {
             self.tableView.tableHeaderView = nil
             self.tableView.isUserInteractionEnabled = true
             self.tableView.reloadData()
         }
     }
-    
+    func reloadReposTableView() {
+        DispatchQueue.main.async { [weak self] in
+            self?.tableView.reloadData()
+        }
+    }
     func retrieveCreationDate(for url: String) {
         if let cachedDate = reposDetails[url] {
             print("Already cached: \(cachedDate)")
@@ -174,34 +179,6 @@ class MainViewController: UIViewController, GitHubRepositoryViewProtocol{
 
 
 
-    //MARK: - Pagination Implementation
-    /// Sets up pagination for repositories based on the specified number of repositories per page.
-    ///
-    /// - Parameter reposPerPage: The number of repositories to display per page.
-    func setPagination (reposPerPage: Int) {
-        // Ensure that reposPerPage is within the valid range.
-        guard reposPerPage < limitForNumberOfRepos else {return}
-        
-        // Check if reposPerPage is within the last 10 repositories.
-        if reposPerPage >= limitForNumberOfRepos - 10 {
-            // If true, add the remaining repositories from reposPerPage to the end of the array.
-            for i in reposPerPage..<limitForNumberOfRepos {
-                paginationRepos.append(repos[i])
-            }
-            // Update repoPerPage to keep track of the last displayed repository index.
-            self.repoPerPage += 10
-        } else {
-            // If reposPerPage is not within the last 10 repositories,
-            // add the next 10 repositories starting from reposPerPage.
-            for i in reposPerPage..<reposPerPage + 10 {
-                paginationRepos.append(repos[i])
-            }
-            // Update repoPerPage to keep track of the last displayed repository index.
-            repoPerPage += 10
-        }
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
-    }
+    
 }
 
