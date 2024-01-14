@@ -12,10 +12,11 @@ class DatabaseManager {
     static let shared = DatabaseManager()
     
     private init() {}
+    let realm = try! Realm()
     
     func getCachedRepositories() -> [Repository] {
         do {
-            let realm = try Realm()
+            
             let repositoriesRealm = realm.objects(RepositoryRealm.self)
             
             let repositories: [Repository] = repositoriesRealm.map { repositoryRealm in
@@ -48,5 +49,16 @@ class DatabaseManager {
         } catch {
             // Handle the error
         }
+    }
+    
+    func searchRepositories(query: String) -> Results<RepositoryRealm>? {
+        guard query.count >= 2 else {
+            // Return an empty array if the query is less than 2 characters
+            return nil
+        }
+        
+        let predicate = NSPredicate(format: "name CONTAINS[cd] %@", query)
+        let results = realm.objects(RepositoryRealm.self).filter(predicate)
+        return results
     }
 }

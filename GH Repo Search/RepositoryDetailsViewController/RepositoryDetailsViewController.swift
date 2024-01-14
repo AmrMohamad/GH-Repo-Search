@@ -16,6 +16,10 @@ class RepositoryDetailsViewController: UIViewController, RepositoryDetailsViewPr
     var presenter: RepositoryDetailsPresenterProtocol?
     
     //MARK: - UI elements
+//    let containerView: UIView = {
+//        let view =
+//    }()
+    
     let avaterImageView: UIImageView = {
         let image = UIImageView(image: UIImage(systemName: "person"))
         image.translatesAutoresizingMaskIntoConstraints = false
@@ -43,7 +47,7 @@ class RepositoryDetailsViewController: UIViewController, RepositoryDetailsViewPr
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .systemGroupedBackground
         
         addViews()
         
@@ -80,8 +84,10 @@ class RepositoryDetailsViewController: UIViewController, RepositoryDetailsViewPr
     
     func showRepositoryInDetails(repo: Repository) {
         DispatchQueue.main.async {
+            self.title = repo.name
             ImageLoader.shared.loadImage(withURL: repo.owner.avaterImageURL, into: self.avaterImageView)
             self.userNameLabel.text = repo.owner.username
         }
     }
 }
+

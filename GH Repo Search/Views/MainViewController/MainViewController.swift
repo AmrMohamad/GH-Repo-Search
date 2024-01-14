@@ -12,10 +12,11 @@ protocol GitHubRepositoryViewProtocol: AnyObject {
     func showRepositories(_ repositories: [Repository])
 }
 
-class MainViewController: UIViewController, GitHubRepositoryViewProtocol, UISearchControllerDelegate, UISearchBarDelegate{
+class MainViewController: UIViewController, GitHubRepositoryViewProtocol{
         
     var presenter: GitHubRepositoriesPresenterProtocol?
     let realm = try! Realm()
+    var reposRealm: Results<RepositoryRealm>?
     //MARK: - UI elements
     let tableView: UITableView = {
         let table = UITableView()
@@ -117,29 +118,27 @@ class MainViewController: UIViewController, GitHubRepositoryViewProtocol, UISear
         }
     }
     
-//    func retrieveCreationDate(for url: String) {
-//
-//        if let cachedDate = reposDetails[url] {
-//            print("Already cached: \(cachedDate)")
-//        } else {
-//            print(url)
-//            GitHubAPIManager.shared.fetchMoreDetailsForRepoWith(url) { [weak self] repositoryDetails in
-//                if let repoDetails = repositoryDetails{
-//                    self?.reposDetails[url] = repoDetails
-//                }
-//                dump(self?.reposDetails)
-//                DispatchQueue.main.async {
-//                    self?.tableView.reloadData()
-//                }
-//            }
-//        }
-//    }
-    
     func retrieveCreationDate(for url: String) {
         if let cachedDate = reposDetails[url] {
             print("Already cached: \(cachedDate)")
         } else {
             print(url)
+
+            // Get the existing object from Realm based on URL
+            if let existingRepository = realm.objects(RepositoryRealm.self).filter("url == %@", url).first {
+                // Check if createdAt is nil in Realm
+                if existingRepository.createdAt != nil {
+                    // createdAt is not nil in Realm, use the value
+                    self.reposDetails[url] = RepositoryDetails(createdAt: existingRepository.createdAt!)
+                    self.tableView.reloadData()
+                    return
+                } else {
+                    // createdAt is nil in Realm
+                    print("createdAt is nil in Realm")
+                }
+            }
+
+            // Fetch data from API
             GitHubAPIManager.shared.fetchMoreDetailsForRepoWith(url) { [weak self] repositoryDetails in
                 if let repoDetails = repositoryDetails {
                     DispatchQueue.main.async {
@@ -154,6 +153,7 @@ class MainViewController: UIViewController, GitHubRepositoryViewProtocol, UISear
                                 print("Error updating createdAt in Realm: \(error)")
                             }
                         }
+
                         // Update the cache
                         self?.reposDetails[url] = repoDetails
 
@@ -163,6 +163,7 @@ class MainViewController: UIViewController, GitHubRepositoryViewProtocol, UISear
             }
         }
     }
+
 
 
     //MARK: - Pagination Implementation
