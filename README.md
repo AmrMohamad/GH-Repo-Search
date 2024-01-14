@@ -1,5 +1,10 @@
 # GitHub Repositories Search
-
+<p align="center">
+    <img src="./Docs/GITHUB-02.png"
+         alt="PyKanban-logo"
+         width="195px"
+         style="display: block; margin: 0 auto"/>
+</p>
 ## Overview
 
 GitHub Repositories Viewer is a straightforward iOS application designed to enable users to explore GitHub repositories. The app leverages the GitHub API to fetch repository data, presenting a list of repositories with additional details for each selected repository.
