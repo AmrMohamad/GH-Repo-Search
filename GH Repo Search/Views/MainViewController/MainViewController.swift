@@ -129,7 +129,12 @@ class MainViewController: UIViewController, GitHubRepositoryViewProtocol{
                 // Check if createdAt is nil in Realm
                 if existingRepository.createdAt != nil {
                     // createdAt is not nil in Realm, use the value
-                    self.reposDetails[url] = RepositoryDetails(createdAt: existingRepository.createdAt!)
+                    self.reposDetails[url] = RepositoryDetails(
+                        createdAt: existingRepository.createdAt,
+                        language: existingRepository.language,
+                        forks: existingRepository.forks!,
+                        watchers: existingRepository.watchers!
+                    )
                     self.tableView.reloadData()
                     return
                 } else {

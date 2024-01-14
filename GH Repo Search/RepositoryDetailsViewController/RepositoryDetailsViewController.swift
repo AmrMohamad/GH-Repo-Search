@@ -16,10 +16,50 @@ class RepositoryDetailsViewController: UIViewController, RepositoryDetailsViewPr
     var presenter: RepositoryDetailsPresenterProtocol?
     
     //MARK: - UI elements
-//    let containerView: UIView = {
-//        let view =
-//    }()
+    let repoDetailsTitlelabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Repository Details"
+        label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+        return label
+    }()
+    var descriptionLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 0
+        label.font = UIFont.systemFont(ofSize: 16, weight: .medium)
+        return label
+    }()
+    let repoDetailsContainerView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .systemBackground
+        view.layer.cornerRadius = 16
+        view.layer.shadowRadius = 3.0
+        view.layer.shadowOpacity = 0.2
+        view.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
+        return view
+    }()
     
+    let ownerTitlelabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Owner"
+        label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+        return label
+    }()
+    
+    let ownerDetailsContainerView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .systemBackground
+        view.layer.cornerRadius = 16
+        view.layer.shadowRadius = 3.0
+        view.layer.shadowOpacity = 0.2
+        view.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
+        return view
+    }()
+
     let avaterImageView: UIImageView = {
         let image = UIImageView(image: UIImage(systemName: "person"))
         image.translatesAutoresizingMaskIntoConstraints = false
@@ -27,18 +67,6 @@ class RepositoryDetailsViewController: UIViewController, RepositoryDetailsViewPr
     }()
     
     let userNameLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
-    let nameLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
-    let descriptionLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -55,30 +83,43 @@ class RepositoryDetailsViewController: UIViewController, RepositoryDetailsViewPr
     }
 
     private func addViews(){
-        view.addSubview(avaterImageView)
-        view.addSubview(userNameLabel)
-        view.addSubview(nameLabel)
-        view.addSubview(descriptionLabel)
+        view.addSubview(repoDetailsContainerView)
+        repoDetailsContainerView.addSubview(repoDetailsTitlelabel)
+        repoDetailsContainerView.addSubview(descriptionLabel)
+        view.addSubview(ownerDetailsContainerView)
+        ownerDetailsContainerView.addSubview(ownerTitlelabel)
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
         NSLayoutConstraint.activate([
-            avaterImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            avaterImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
-            avaterImageView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.14),
-            avaterImageView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.28),
+            repoDetailsContainerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            repoDetailsContainerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 5),
+            repoDetailsContainerView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.62),
+            repoDetailsContainerView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.80),
             
-            userNameLabel.leadingAnchor.constraint(equalTo: avaterImageView.trailingAnchor, constant: 6),
-            userNameLabel.topAnchor.constraint(equalTo: avaterImageView.topAnchor, constant: 2),
+            ownerDetailsContainerView.leadingAnchor.constraint(equalTo: repoDetailsContainerView.leadingAnchor),
+            ownerDetailsContainerView.topAnchor.constraint(equalTo: repoDetailsContainerView.bottomAnchor, constant: 18),
+            ownerDetailsContainerView.trailingAnchor.constraint(equalTo: repoDetailsContainerView.trailingAnchor),
+            ownerDetailsContainerView.heightAnchor.constraint(equalTo: repoDetailsContainerView.heightAnchor, multiplier: 0.20)
+        ])
+        
+        NSLayoutConstraint.activate([
+            repoDetailsTitlelabel.leadingAnchor.constraint(equalTo: repoDetailsContainerView.leadingAnchor, constant: 10),
+            repoDetailsTitlelabel.topAnchor.constraint(equalTo: repoDetailsContainerView.topAnchor, constant: 5),
+            repoDetailsTitlelabel.heightAnchor.constraint(equalToConstant: 20),
             
-            nameLabel.leadingAnchor.constraint(equalTo: userNameLabel.leadingAnchor),
-            nameLabel.topAnchor.constraint(equalTo: userNameLabel.bottomAnchor, constant: 4),
+            descriptionLabel.leadingAnchor.constraint(equalTo: repoDetailsTitlelabel.leadingAnchor),
+            descriptionLabel.trailingAnchor.constraint(equalTo: repoDetailsContainerView.trailingAnchor, constant: -10),
+            descriptionLabel.topAnchor.constraint(equalTo: repoDetailsTitlelabel.bottomAnchor, constant: 4),
             
-            descriptionLabel.leadingAnchor.constraint(equalTo: avaterImageView.leadingAnchor),
-            descriptionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            descriptionLabel.topAnchor.constraint(equalTo: avaterImageView.bottomAnchor, constant: 16),
+        ])
+        
+        NSLayoutConstraint.activate([
+            ownerTitlelabel.leadingAnchor.constraint(equalTo: ownerDetailsContainerView.leadingAnchor, constant: 10),
+            ownerTitlelabel.topAnchor.constraint(equalTo: ownerDetailsContainerView.topAnchor, constant: 5),
+            ownerTitlelabel.heightAnchor.constraint(equalToConstant: 20),
         ])
     }
     
@@ -87,6 +128,7 @@ class RepositoryDetailsViewController: UIViewController, RepositoryDetailsViewPr
             self.title = repo.name
             ImageLoader.shared.loadImage(withURL: repo.owner.avaterImageURL, into: self.avaterImageView)
             self.userNameLabel.text = repo.owner.username
+            self.descriptionLabel.text = repo.description!
         }
     }
 }
